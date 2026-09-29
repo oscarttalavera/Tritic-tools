@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Directorio de modelos 3D — Tritic Tools</title>
+<meta name="description" content="Directorio curado de sitios para descargar modelos 3D: Printables, MakerWorld, Thingiverse, GrabCAD y también joyas de nicho como NIH 3D, Smithsonian, e-NABLE o Gridfinity. Con licencias, datos curiosos y advertencias.">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/tritic-logo-bloque.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=0.4">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="https://tritic3d.com" aria-label="Tritic"><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></a>
+    <a class="serie" href="../" style="text-decoration:none">Tools</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">04</span>
+    <p class="kicker">Directorio de modelos 3D</p>
+    <h1>Dónde encontrar el modelo que buscas</h1>
+    <p>Desde las grandes comunidades hasta repositorios de museos, NASA y ortopedia abierta. <span id="total">30</span> sitios con su origen, licencia, puntos fuertes, advertencias y algún dato que quizá no sabías.</p>
+  </div>
+</div>
+
+<div class="toolbar est" id="toolbar">
+  <div class="wrap">
+    <div class="tb-row">
+      <div id="cats" class="pills" role="group" aria-label="Categoría"></div>
+      <label class="buscar"><span class="label">Buscar sitio</span>
+        <input id="q" type="search" placeholder="miniaturas, CAD, museo, STEP…" autocomplete="off" spellcheck="false"></label>
+    </div>
+    <div class="tb-row tb-sub">
+      <div id="costos" class="seg" role="group" aria-label="Costo"></div>
+      <button type="button" id="azar" class="pill">Sorpréndeme ↯</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="guia">
+    <h2>Guía rápida</h2>
+    <p class="lead">¿Sabes lo que necesitas pero no dónde buscarlo? Empieza por aquí.</p>
+    <div id="rapida" class="rapida"></div>
+  </section>
+
+  <section id="directorio">
+    <h2>Directorio</h2>
+    <p id="resultado" class="resultado" aria-live="polite"></p>
+    <div id="lista" class="grid sitios"></div>
+    <noscript><p class="lead">Este directorio necesita JavaScript para mostrarse.</p></noscript>
+  </section>
+
+  <section id="movimientos">
+    <h2>Movimientos del sector</h2>
+    <p class="lead">Este mundo cambia rápido: los dueños de las plataformas cambian y con ellos las reglas. Lo más reciente.</p>
+    <ol id="linea" class="linea"></ol>
+  </section>
+
+  <section id="licencias">
+    <h2>Licencias en 60 segundos</h2>
+    <p class="lead">Que un modelo sea gratis no significa que puedas hacer con él lo que quieras. Revisa siempre la licencia antes de imprimir para vender.</p>
+    <div class="tabla-wrap"><table id="tabla-lic" class="tabla lic"></table></div>
+    <p class="caption">Resumen orientativo, no es asesoría legal. Lee el texto de la licencia de cada modelo. Una plataforma puede añadir sus propios términos (por ejemplo, “solo uso personal”).</p>
+  </section>
+
+  <section id="antes">
+    <h2>Antes de darle “imprimir”</h2>
+    <p class="lead">Una lista corta que ahorra filamento y tiempo.</p>
+    <ul id="checks" class="checks"></ul>
+    <div class="callout nota"><span class="tab-c"><i></i>Fuera de los directorios</span>
+      <ul class="lista"><li>Muchos diseñadores publican y venden directo en <b>Patreon, Gumroad, Ko-fi o Etsy</b>, y los proyectos de hardware abierto viven en <b>GitHub</b>. Si sigues a un creador que te gusta, revisa también sus propias páginas.</li></ul>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="cajetin">
+      <div><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></div>
+      <div><span class="k">Documento</span>Directorio de modelos 3D</div>
+      <div><span class="k">Código</span>TRT-PUB-TLS-004</div>
+      <div><span class="k">Versión</span>v0.1</div>
+      <div><span class="k">Fecha</span>2026-09</div>
+    </div>
+    <div class="legal">© Tritic · <a href="https://tritic3d.com">tritic3d.com</a> · <a href="../">Tritic Tools</a> · Los nombres y marcas pertenecen a sus dueños; Tritic no está afiliado a ninguno de estos sitios. Datos verificados en septiembre de 2026.</div>
+  </div>
+</footer>
+<script src="modelos.js?v=0.1"></script>
+</body>
+</html>
