@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía de barrenos — Tritic Tools</title>
+<meta name="description" content="Diámetros de barrenos para machuelos métricos y ANSI, insertos roscados, dowel pins, tubería y agujeros impresos en 3D. Con calculadora de ajuste y buscador de brocas.">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/tritic-logo-bloque.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=0.3">
+</head>
+<body class="barrenos">
+<header class="top">
+  <div class="wrap">
+    <a href="https://tritic3d.com" aria-label="Tritic"><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></a>
+    <a class="serie" href="../" style="text-decoration:none">Tools</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">02</span>
+    <p class="kicker">Guía de barrenos</p>
+    <h1>Diámetros de agujero</h1>
+    <p>Machuelos métricos y ANSI, insertos roscados, dowel pins, tubería y agujeros impresos en 3D. Toca cualquier valor para copiarlo.</p>
+  </div>
+</div>
+
+<div class="toolbar" id="toolbar">
+  <div class="wrap">
+    <div class="tb-row">
+      <div class="seg" role="group" aria-label="Unidades">
+        <button type="button" data-unit="mm" aria-pressed="true">mm</button>
+        <button type="button" data-unit="in" aria-pressed="false">pulgadas</button>
+      </div>
+      <label class="buscar"><span class="label">Filtrar tablas</span>
+        <input id="q" type="search" placeholder="M5, 1/4, #8, NPT…" autocomplete="off" spellcheck="false"></label>
+    </div>
+    <nav class="anclas" aria-label="Secciones">
+      <a href="#rapida">Consulta rápida</a>
+      <a href="#metricas">Métricas</a>
+      <a href="#ansi">ANSI</a>
+      <a href="#insertos">Insertos</a>
+      <a href="#pines">Dowel pins</a>
+      <a href="#impresion">Impresión 3D</a>
+      <a href="#tuberia">Tubería</a>
+      <a href="#brocas">Brocas</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="rapida">
+    <h2>Consulta rápida</h2>
+    <p class="lead">Elige un tornillo y ve todos sus barrenos en un solo lugar. La fila queda resaltada en las tablas de abajo.</p>
+    <div id="sizes" class="pills" role="group" aria-label="Tamaño de tornillo"></div>
+    <div id="tiles" class="tiles" aria-live="polite"></div>
+  </section>
+
+  <section id="metricas">
+    <h2>Roscas métricas ISO</h2>
+    <p class="lead">Barreno para machuelo y agujeros pasantes con sus cabezas.</p>
+    <p class="caption">Tabla 1 — Barreno para machuelo (≈ 75 % de rosca). Ø en <span data-u></span>.</p>
+    <div class="tabla-wrap"><table id="t-metrica" class="tabla"></table></div>
+    <p class="caption">Fuente: ISO 261 / práctica de taller. «Formado» es para machuelo de laminación (sin viruta), que requiere un barreno mayor y buena lubricación.</p>
+    <p class="caption" style="margin-top:36px">Tabla 2 — Agujero pasante y alojamiento de cabeza (tornillo Allen). Ø en <span data-u></span>.</p>
+    <div class="tabla-wrap"><table id="t-pasante" class="tabla cond"></table></div>
+    <p class="caption">Fuente: ISO 273 (series fina, media y gruesa), ISO 4762 / DIN 974-1 (cajeado) e ISO 10642 (avellanado 90°, cabeza plana).</p>
+  </section>
+
+  <section id="ansi">
+    <h2>Roscas ANSI (UNC / UNF)</h2>
+    <p class="lead">Barrenos para machuelo en pulgadas. Incluye la designación de la broca y su equivalente.</p>
+    <p class="caption">Tabla 3 — Barreno para machuelo (≈ 75 % de rosca).</p>
+    <div class="tabla-wrap"><table id="t-ansi" class="tabla"></table></div>
+    <p class="caption">Fuente: ASME B1.1 / Machinery's Handbook. Broca por número (#), letra o fracción de pulgada.</p>
+  </section>
+
+  <section id="insertos">
+    <h2>Insertos roscados en impresión 3D</h2>
+    <p class="lead">Insertos de latón para instalar con calor (heat-set). Valores probados en Tritic; varían entre fabricantes.</p>
+    <p class="caption">Tabla 4 — Barreno para inserto por calor. Ø en <span data-u></span>.</p>
+    <div class="tabla-wrap"><table id="t-insertos" class="tabla"></table></div>
+    <div class="callout nota">
+      <div class="tab-c"><i></i>Nota</div>
+      <ul class="lista">
+        <li>Confirma el Ø exterior con la ficha de tu inserto y haz una pieza de prueba antes de imprimir el lote.</li>
+        <li>Deja una pared alrededor del inserto de al menos 2 mm (≈ 4 perímetros) y un fondo de 1 mm o más para que el plástico desplazado tenga a dónde ir.</li>
+        <li>Instala con soldador a 200–230 °C (PLA/PETG) y presiona en línea recta hasta que la cabeza quede al ras.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pines">
+    <h2>Dowel pins y pasadores</h2>
+    <p class="lead">Agujeros para pasadores de precisión (rimado) y pasadores elásticos, en maquinado.</p>
+    <p class="caption">Tabla 5 — Dowel pins y pasadores elásticos. Ø en <span data-u></span>.</p>
+    <div class="tabla-wrap"><table id="t-pines" class="tabla cond"></table></div>
+    <p class="caption">Fuente: ISO 2338 / ISO 8734 (pin m6), ISO 286 (H7, H12) e ISO 8752 (pasador elástico). Barreno previo ≈ Ø nominal − 0.2 mm, después rimar. H7 / m6 es un ajuste de transición (presión ligera).</p>
+  </section>
+
+  <section id="impresion">
+    <h2>Agujeros en piezas impresas</h2>
+    <p class="lead">Los agujeros salen más chicos que el diseño. Calcula el diámetro a modelar para tornillos, pines, imanes o varillas.</p>
+    <div class="calc">
+      <div class="calc-in">
+        <label for="c-nom" class="label">Diámetro de la pieza (<span data-u></span>)</label>
+        <input id="c-nom" type="number" min="0" step="any" inputmode="decimal" value="3">
+        <div id="c-presets" class="pills chips-s" role="group" aria-label="Diámetros comunes"></div>
+        <span class="label" style="margin-top:20px;display:block">Tipo de ajuste</span>
+        <div id="c-fit" class="pills" role="group" aria-label="Tipo de ajuste"></div>
+        <label class="chk"><input id="c-hor" type="checkbox"> Agujero horizontal (eje paralelo a la cama)</label>
+        <label for="c-cal" class="label" style="margin-top:16px;display:block">Calibración de tu impresora (mm)</label>
+        <input id="c-cal" type="number" step="0.05" inputmode="decimal" value="0">
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <span class="label">Modela el agujero a</span>
+        <button id="c-res" class="big val" type="button"></button>
+        <p id="c-desglose" class="desglose"></p>
+        <p id="c-hint" class="hint"></p>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:36px">Tabla 6 — Holgura sugerida sobre el diámetro nominal (FDM, boquilla 0.4 mm).</p>
+    <div class="tabla-wrap"><table id="t-fits" class="tabla"></table></div>
+    <p class="caption">Fuente: Tritic. Punto de partida: imprime una prueba con 3–4 diámetros y registra tu calibración arriba (se guarda en este navegador).</p>
+  </section>
+
+  <section id="tuberia">
+    <h2>Roscas de tubería</h2>
+    <p class="lead">Barrenos previos para machuelo de tubería NPT (cónica) y BSP «G» (paralela).</p>
+    <p class="caption">Tabla 7 — Barreno para machuelo de tubería.</p>
+    <div class="tabla-wrap"><table id="t-tuberia" class="tabla"></table></div>
+    <p class="caption">Fuente: ASME B1.20.1 (NPT), ISO 228 (G) / Machinery's Handbook. En NPT el barreno sirve como piloto: el machuelo cónico se detiene por profundidad, no por diámetro.</p>
+  </section>
+
+  <section id="brocas">
+    <h2>Buscador de brocas</h2>
+    <p class="lead">Escribe un diámetro y encuentra la broca más cercana en milímetros, fracciones, números y letras.</p>
+    <div class="finder">
+      <label for="b-d" class="label">Diámetro deseado (<span data-u></span>)</label>
+      <input id="b-d" type="number" min="0" step="any" inputmode="decimal" value="4.2">
+    </div>
+    <div class="tabla-wrap"><table id="t-brocas" class="tabla"></table></div>
+    <p class="caption">Fuente: series estándar de brocas helicoidales (métrica, fracciones de 1/64″, números #1–#60 y letras A–Z). Δ = diferencia contra el diámetro deseado, en mm.</p>
+  </section>
+  <noscript><p class="lead">Esta guía necesita JavaScript para mostrarse.</p></noscript>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="cajetin">
+      <div><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></div>
+      <div><span class="k">Documento</span>Guía de barrenos</div>
+      <div><span class="k">Código</span>TRT-PUB-TLS-003</div>
+      <div><span class="k">Versión</span>v0.1</div>
+      <div><span class="k">Fecha</span>2026-09</div>
+    </div>
+    <div class="legal">© Tritic · <a href="https://tritic3d.com">tritic3d.com</a> · <a href="../">Tritic Tools</a></div>
+  </div>
+</footer>
+<script src="barrenos.js?v=0.1"></script>
+</body>
+</html>
