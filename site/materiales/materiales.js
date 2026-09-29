@@ -51,7 +51,114 @@ const MATERIALES = [
     ap: ["Herramentales, plantillas y fixtures", "Piezas estructurales y soportes de carga", "Reemplazo de piezas metálicas ligeras"],
     pr: ["Muy higroscópico: secar antes de imprimir y almacenar sellado.", "Abrasivo: usar boquilla endurecida obligatoriamente.", "Polvo de fibra: evitar lijado en seco sin protección respiratoria."],
   },
+  {
+    id: "abs", nombre: "ABS", familia: "Acrilonitrilo butadieno estireno",
+    desc: "Termoplástico técnico clásico: tenaz, resistente a temperatura moderada y fácil de post-procesar (lijado, pegado, alisado con vapor de acetona).",
+    boq: [230, 260], cama: [90, 110], vent: [0, 30], cam: "Requerida", boquilla: "Estándar (latón)",
+    sec: "80 °C · 4 h", dens: "1.04", hdt: "≈ 95",
+    req: { camara: true, endurecida: false, secado: false },
+    r: { rigidez: 3, calor: 3, impacto: 4, flex: 2, uv: 2, quim: 3, facil: 3 },
+    ap: ["Carcasas y piezas funcionales con temperatura", "Piezas que requieren lijado, pegado o alisado con vapor", "Prototipos de ingeniería y herramentales ligeros"],
+    pr: ["Requiere cámara cerrada: sin ella warping y delaminación entre capas.", "Emite vapores (estireno) al imprimir: ventilación o filtración obligatoria.", "Se degrada con la radiación UV: para exterior preferir ASA."],
+  },
+  {
+    id: "pp", nombre: "PP", familia: "Polipropileno",
+    desc: "Poliolefina ligera con excelente resistencia química y fatiga. Permite bisagras vivas, pero es de los materiales más difíciles de adherir y estabilizar.",
+    boq: [220, 250], cama: [80, 100], vent: [30, 60], cam: "Recomendada", boquilla: "Estándar (latón)",
+    sec: "55 °C · 4 h", dens: "0.90–0.95", hdt: "≈ 90",
+    req: { camara: true, endurecida: false, secado: false },
+    r: { rigidez: 2, calor: 3, impacto: 4, flex: 3, uv: 2, quim: 5, facil: 1 },
+    ap: ["Contenedores, tuberías y piezas en contacto con químicos", "Bisagras vivas y piezas con fatiga por flexión", "Piezas ligeras que deben flotar (densidad < 1 g/cm³)"],
+    pr: ["Adhesión a cama muy baja: usar superficie o cinta de PP.", "Warping elevado: cámara cerrada y esquinas redondeadas.", "No se pega con adhesivos comunes ni se pinta sin tratamiento superficial."],
+  },
+  {
+    id: "petg-cf", nombre: "PETG-CF", familia: "PETG reforzado con fibra de carbono",
+    desc: "PETG cargado con fibra corta: más rígido y dimensionalmente estable, con acabado mate y buena imprimibilidad para un material técnico.",
+    boq: [240, 270], cama: [65, 80], vent: [30, 60], cam: "Opcional", boquilla: "Endurecida (acero / carburo)",
+    sec: "65 °C · 6–8 h", dens: "1.25–1.35", hdt: "≈ 75",
+    req: { camara: false, endurecida: true, secado: true },
+    r: { rigidez: 4, calor: 2, impacto: 2, flex: 1, uv: 3, quim: 4, facil: 3 },
+    ap: ["Fixtures, soportes y brackets rígidos", "Estructuras de dron, RC y robótica", "Piezas con acabado mate sin post-procesado"],
+    pr: ["Abrasivo: usar boquilla endurecida obligatoriamente.", "Menor tenacidad al impacto que el PETG sin carga.", "Polvo de fibra: evitar lijado en seco sin protección respiratoria."],
+  },
+  {
+    id: "pc-cf", nombre: "PC-CF", familia: "Policarbonato reforzado con fibra de carbono",
+    desc: "Material de altas prestaciones: rigidez y resistencia térmica superiores, para herramentales y piezas estructurales exigentes.",
+    boq: [270, 310], cama: [100, 120], vent: [0, 20], cam: "Requerida (calefactada)", boquilla: "Endurecida (acero / carburo)",
+    sec: "80 °C · 8–12 h", dens: "1.20–1.25", hdt: "125–140",
+    req: { camara: true, endurecida: true, secado: true },
+    r: { rigidez: 5, calor: 5, impacto: 4, flex: 1, uv: 2, quim: 3, facil: 1 },
+    ap: ["Herramentales y fixtures para alta temperatura", "Piezas estructurales aeronáuticas y automotrices", "Reemplazo de piezas metálicas en carga y calor"],
+    pr: ["Requiere hotend de alta temperatura (≥ 300 °C) y cámara calefactada.", "Muy higroscópico: secar antes de imprimir y almacenar sellado.", "Warping y delaminación severos sin cama a 100 °C o más.", "Abrasivo: boquilla endurecida obligatoria."],
+  },
 ];
+
+/* Fichas técnicas (TDS) de fabricantes. tipo: "pdf" = PDF directo; "web" = página oficial del producto.
+   Solo enlaces oficiales de cada marca verificados. Falta de entrada = la marca no publica TDS de ese material. */
+const SUNLU = "SUNLU", CREALITY = "Creality", POLYMAKER = "Polymaker", BAMBU = "Bambu Lab";
+const PMK = "https://wiki.polymaker.com/polymaker-products/more-about-our-products/documents/technical-data-sheets/";
+const BBL = "https://wiki.bambulab.com/filament-acc/";
+const SLU = "https://media.sunlu.com/prod/";
+const CRE = "https://store.creality.com/products/";
+const TDS = {
+  pla: [
+    { marca: SUNLU, producto: "PLA", tipo: "pdf", url: SLU + "20260618/73632671781747576290.pdf?filename=TDS" },
+    { marca: CREALITY, producto: "Hyper PLA", tipo: "web", url: CRE + "hyper-series-pla-3d-printing-filament-1kg" },
+    { marca: POLYMAKER, producto: "PolyLite PLA", tipo: "web", url: PMK + "pla/polylite-tm-pla" },
+    { marca: BAMBU, producto: "PLA Basic", tipo: "pdf", url: BBL + "abs-asa-pc/bambu_pla_basic_technical_data_sheet.pdf" },
+  ],
+  petg: [
+    { marca: SUNLU, producto: "PETG", tipo: "pdf", url: SLU + "20260330/f27808f0-3a19-49e3-bd79-6e846d6f4c15.pdf?filename=TDS" },
+    { marca: CREALITY, producto: "Hyper PETG", tipo: "web", url: CRE + "hyper-series-petg-3d-printing-filament-1kg" },
+    { marca: POLYMAKER, producto: "PolyLite PETG", tipo: "web", url: PMK + "petg-pet/polylite-tm-petg" },
+    { marca: BAMBU, producto: "PETG Basic", tipo: "pdf", url: "https://store.bblcdn.com/s1/default/cb94589bf7994fdcbfa833badefae9cd/Bambu_PETG_Basic_Technical_Data_Sheet.pdf" },
+  ],
+  asa: [
+    { marca: SUNLU, producto: "ASA", tipo: "pdf", url: SLU + "20260330/7d61617c-7540-4ae2-88d3-a0d206e5d801.pdf?filename=TDS" },
+    { marca: CREALITY, producto: "HP ASA", tipo: "web", url: CRE + "creality-hp-asa-3d-printing-filament" },
+    { marca: POLYMAKER, producto: "Polymaker ASA", tipo: "web", url: PMK + "abs-asa/polymaker-tm-asa" },
+    { marca: BAMBU, producto: "ASA", tipo: "pdf", url: BBL + "abs-asa-pc/6eaf4c432d1d4014a1975e55a55ed00b.pdf" },
+  ],
+  tpu: [
+    { marca: SUNLU, producto: "TPU 95A", tipo: "pdf", url: SLU + "20260330/e8b9c06a-4b93-46cb-9532-d9deb185a7c8.pdf?filename=TDS" },
+    { marca: CREALITY, producto: "HP TPU", tipo: "web", url: CRE + "hp-tpu-fdm-3d-printer-filament-1-75mm-1kg" },
+    { marca: POLYMAKER, producto: "PolyFlex TPU95", tipo: "web", url: PMK + "tpu/polyflex-tm-tpu95" },
+    { marca: BAMBU, producto: "TPU 95A HF", tipo: "pdf", url: "https://store.bblcdn.com/58df32731eab4c90a7dac9b12e13ba88.pdf" },
+  ],
+  "pa-cf": [
+    { marca: SUNLU, producto: "PA6-CF", tipo: "pdf", url: SLU + "20260330/68c0ccf4-9059-4b50-ad40-95ba3634f0ae.pdf?filename=TDS" },
+    { marca: SUNLU, producto: "PA12-CF", tipo: "pdf", url: SLU + "20260330/93d827f4-50e9-45b4-8b24-bf5ddaf8273f.pdf?filename=TDS" },
+    { marca: POLYMAKER, producto: "Fiberon PA6-CF20", tipo: "web", url: PMK + "nylon/fiberon-tm-pa6-cf20" },
+    { marca: BAMBU, producto: "PA6-CF", tipo: "pdf", url: BBL + "petcf-ppacf/c750bddfb8e44af6ae9f7dd9625fa458.pdf" },
+    { marca: BAMBU, producto: "PAHT-CF", tipo: "pdf", url: BBL + "asacf-pahtcf/65f1b18a6d6142d794a1a6a00f1496ef.pdf" },
+  ],
+  abs: [
+    { marca: SUNLU, producto: "ABS", tipo: "pdf", url: SLU + "20260327/499dacc6-a1e4-4f81-b1ae-8bf1b8e424ec.pdf?filename=TDS" },
+    { marca: CREALITY, producto: "Hyper ABS", tipo: "web", url: CRE + "hyper-abs" },
+    { marca: POLYMAKER, producto: "PolyLite ABS", tipo: "web", url: PMK + "abs-asa/polylite-tm-abs" },
+    { marca: BAMBU, producto: "ABS", tipo: "pdf", url: BBL + "abs-asa-pc/bambu_abs_technical_data_sheet_v3.pdf" },
+  ],
+  pp: [
+    { marca: SUNLU, producto: "PP", tipo: "pdf", url: SLU + "20260413/fbfe6e74-b29f-4f0f-a9b3-84aaa6b2fc85.pdf?filename=TDS" },
+  ],
+  "petg-cf": [
+    { marca: SUNLU, producto: "PETG-CF", tipo: "pdf", url: SLU + "20260330/433432a8-dfcb-485e-bd8e-a7be94dda4ce.pdf?filename=TDS" },
+    { marca: POLYMAKER, producto: "Fiberon PETG-rCF08 (fibra reciclada)", tipo: "web", url: PMK + "petg-pet/fiberon-tm-petg-rcf08" },
+  ],
+  "pc-cf": [
+    { marca: SUNLU, producto: "PC (sin fibra)", tipo: "pdf", url: SLU + "20260330/46dca9d5-d877-4a9d-b416-3ad38450204a.pdf?filename=TDS", base: true },
+    { marca: CREALITY, producto: "Hyper PC (sin fibra)", tipo: "web", url: CRE + "hyper-pc-filament-1-75mm-1kg", base: true },
+    { marca: POLYMAKER, producto: "PolyMax PC (sin fibra)", tipo: "web", url: PMK + "polycarbonate/polymax-tm-pc", base: true },
+    { marca: BAMBU, producto: "PC (sin fibra)", tipo: "pdf", url: BBL + "abs-asa-pc/a52afdccddfd448583d119587122c8c5.pdf", base: true },
+  ],
+};
+const TDS_NOTAS = {
+  "pc-cf": "No se encontró un TDS de PC-CF en ninguna de estas cuatro marcas. Se enlazan los TDS del policarbonato base como referencia; la versión con fibra de carbono es más rígida y más abrasiva.",
+  pp: "Solo SUNLU tiene TDS de PP entre estas marcas.",
+  "petg-cf": "No se encontró TDS oficial de PETG-CF de Bambu Lab ni de Creality.",
+  "pa-cf": "No se encontró TDS de PA-CF de Creality.",
+};
+MATERIALES.forEach((m) => { m.tds = TDS[m.id] || []; m.tdsNota = TDS_NOTAS[m.id] || ""; });
 
 const PROPS = [
   ["facil", "Facilidad de impresión"], ["rigidez", "Rigidez"], ["impacto", "Tenacidad al impacto"],
@@ -65,7 +172,9 @@ const NECESIDADES = [
   ["calor", "Alta temperatura", "calor"],
   ["rigidez", "Rigidez / carga", "rigidez"],
 ];
-const ESCALA = { boq: [180, 300], cama: [20, 120] };
+const ESCALA = { boq: [180, 320], cama: [20, 120] };
+const MARCAS = ["SUNLU", "Creality", "Polymaker", "Bambu Lab"];
+const enlace = (t, txt) => `<a href="${t.url}" target="_blank" rel="noopener noreferrer">${txt}</a>`;
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -129,6 +238,11 @@ function pintarTabla() {
     grupo("Datos"),
     fila("Densidad (g/cm³)", (m) => `<span class="v">${m.dens}</span>`),
     fila("HDT aprox. (°C)", (m) => `<span class="v">${m.hdt}</span>`),
+    grupo("Fichas técnicas (TDS)"),
+    ...MARCAS.map((marca) => fila(marca, (m) => {
+      const ls = m.tds.filter((t) => t.marca === marca);
+      return ls.length ? `<span class="tds-c">${ls.map((t) => enlace(t, `${t.producto}<span class="ext" aria-hidden="true"> ↗</span>`)).join("")}</span>` : `<span class="sub">—</span>`;
+    })),
   ].join("");
   $("#tabla").innerHTML = cols.length
     ? `<thead><tr><th scope="col"></th>${th}</tr></thead><tbody>${cuerpo}</tbody>`
@@ -173,6 +287,12 @@ function pintarFicha() {
         <h4>Aplicaciones</h4>
         <ul class="lista">${m.ap.map((x) => `<li>${x}</li>`).join("")}</ul>
       </div>
+    </div>
+    <div class="tds">
+      <h4>Fichas técnicas del fabricante (TDS)</h4>
+      <ul class="tds-l">${m.tds.map((t) => `<li><span class="label">${t.marca}</span>${enlace(t, t.producto)}<span class="badge ${t.tipo === "pdf" ? "ok" : "info"}">${t.tipo === "pdf" ? "PDF" : "Página oficial"}</span></li>`).join("")}</ul>
+      ${m.tdsNota ? `<p class="tds-n">${m.tdsNota}</p>` : ""}
+      <p class="tds-n">Enlaces oficiales de cada marca. Las revisiones cambian: confirma la versión vigente antes de fijar parámetros.</p>
     </div>
     <div class="callout"><span class="tab-c"><i></i>Precaución</span><ul class="lista">${m.pr.map((x) => `<li>${x}</li>`).join("")}</ul></div>
     <div class="nav-fichas">
