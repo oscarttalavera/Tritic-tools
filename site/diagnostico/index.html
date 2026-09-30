@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diagnóstico de fallas — Tritic Tools</title>
+<meta name="description" content="Guía interactiva para diagnosticar fallas de impresión 3D FDM: elige el síntoma, responde un par de preguntas y obtén las causas más probables con su solución y el paso de calibración que corresponde.">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/tritic-logo-bloque.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=0.6">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="https://tritic3d.com" aria-label="Tritic"><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></a>
+    <a class="serie" href="../" style="text-decoration:none">Tools</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">06</span>
+    <p class="kicker">Diagnóstico de fallas</p>
+    <h1>¿Qué le pasa a tu impresión?</h1>
+    <p>Elige el síntoma, responde una o dos preguntas y te decimos qué revisar primero, en orden de probabilidad, con el paso de calibración que lo resuelve.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="diag-s" class="diag-s">
+    <div id="diag" class="diag" hidden aria-live="polite"></div>
+  </section>
+
+  <section id="elegir">
+    <h2>Elige el síntoma</h2>
+    <p class="lead">Describe lo que ves en la pieza, no lo que crees que causa el problema.</p>
+    <div class="tb-row tb-sub">
+      <div id="grupos" class="pills" role="group" aria-label="Tipo de problema"></div>
+      <label class="buscar"><span class="label">Buscar síntoma</span>
+        <input id="q" type="search" placeholder="hilos, esquinas, ondas…" autocomplete="off" spellcheck="false"></label>
+    </div>
+    <p id="resultado" class="resultado" aria-live="polite"></p>
+    <div id="sintomas" class="grid"></div>
+    <noscript><p class="lead">Esta guía necesita JavaScript para mostrarse.</p></noscript>
+  </section>
+
+  <section id="antes">
+    <h2>Antes de diagnosticar</h2>
+    <p class="lead">Cuatro revisiones que resuelven muchos problemas y que contaminan cualquier diagnóstico si no las descartas.</p>
+    <ul class="checks">
+      <li><span class="chip">01</span><div><b>Filamento seco</b><p>Chasquidos, burbujas o hilos finos son la firma de un filamento húmedo.</p></div></li>
+      <li><span class="chip">02</span><div><b>Cama limpia</b><p>Un paño con alcohol isopropílico o agua con jabón antes de cada impresión.</p></div></li>
+      <li><span class="chip">03</span><div><b>Boquilla y trayecto libres</b><p>Extruye a mano unos centímetros: debe salir un hilo continuo y recto.</p></div></li>
+      <li><span class="chip">04</span><div><b>Mecánica firme</b><p>Sin tornillos flojos, correas parejas y ejes que se muevan suave a mano.</p></div></li>
+    </ul>
+    <div class="callout nota"><span class="tab-c"><i></i>Cambia una cosa a la vez</span>
+      <ul class="lista"><li>Ajusta un solo parámetro por intento e imprime una pieza pequeña de prueba. Si cambias varios a la vez, no sabrás qué funcionó.</li></ul>
+    </div>
+  </section>
+
+  <section id="siguiente">
+    <h2>¿Ya diagnosticaste y quieres dejarlo bien?</h2>
+    <p class="lead">La guía de calibración lleva tu impresora al mejor punto, paso a paso y en el orden correcto.</p>
+    <a class="visitar" href="../calibracion/">Ir a la guía de calibración →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cajetin">
+      <div><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></div>
+      <div><span class="k">Documento</span>Diagnóstico de fallas</div>
+      <div><span class="k">Código</span>TRT-GTE-DIA-001</div>
+      <div><span class="k">Versión</span>v0.1</div>
+      <div><span class="k">Fecha</span>2026-09</div>
+    </div>
+    <div class="legal">© Tritic · <a href="https://tritic3d.com">tritic3d.com</a> · <a href="../">Tritic Tools</a> · Criterios basados en las guías abiertas de Ellis, Prusa y Teaching Tech. Orientativo: cada máquina es distinta.</div>
+  </div>
+</footer>
+<script src="diagnostico.js?v=0.1"></script>
+</body>
+</html>

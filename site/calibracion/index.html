@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía de calibración — Tritic Tools</title>
+<meta name="description" content="Guía paso a paso para calibrar una impresora 3D FDM en el orden correcto: mecánica, extrusor, primera capa, temperatura, pressure advance, flujo, retracción y más, con los modelos de prueba más confiables.">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/tritic-logo-bloque.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=0.6">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="https://tritic3d.com" aria-label="Tritic"><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></a>
+    <a class="serie" href="../" style="text-decoration:none">Tools</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">05</span>
+    <p class="kicker">Guía de calibración</p>
+    <h1>Calibra en el orden correcto</h1>
+    <p>Quince pasos, del más básico al más fino, con los modelos de prueba que más gente usa y con los que más gente llega al mismo resultado. Marca tu avance mientras trabajas.</p>
+  </div>
+</div>
+
+<div class="toolbar est" id="toolbar">
+  <div class="wrap">
+    <div class="tb-row">
+      <div id="fases" class="pills" role="group" aria-label="Fase"></div>
+      <div class="prog"><span class="label" id="prog-txt"></span><span class="prog-track"><i id="prog-bar"></i></span>
+        <button type="button" id="reiniciar" class="link-b">Reiniciar</button></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="reglas">
+    <h2>Antes de empezar</h2>
+    <p class="lead">El orden importa: cada paso depende del anterior. Y una sola regla evita la mayoría de confusiones.</p>
+    <div class="reglas">
+      <div><span class="chip">1</span><div><b>Cambia una sola cosa a la vez</b><p>Si cambias dos parámetros, no sabrás cuál arregló (o rompió) la pieza.</p></div></div>
+      <div><span class="chip">2</span><div><b>Una calibración por filamento</b><p>Temperatura, flujo, pressure advance y retracción dependen del carrete. Guarda un perfil por marca, material y color.</p></div></div>
+      <div><span class="chip">3</span><div><b>Filamento seco y cama limpia</b><p>Si no, cualquier resultado se contamina. Es el paso 02 de la lista, y también el primer sospechoso.</p></div></div>
+      <div><span class="chip">4</span><div><b>Anota los valores</b><p>Una tabla sencilla con fecha, filamento y valores te evita repetir todo cuando cambies algo.</p></div></div>
+    </div>
+    <p class="caption">Las impresoras cerradas (Bambu Lab, Prusa) ya traen calibrados varios de estos pasos (PID, E-steps, nivelación). Empieza en la primera capa o en el filamento.</p>
+  </section>
+
+  <section id="orden">
+    <h2>Los pasos</h2>
+    <p class="lead">Sigue el orden de arriba a abajo. Cada paso trae el procedimiento, cómo leer el resultado, los modelos recomendados y los síntomas que ayuda a resolver.</p>
+    <ol id="indice" class="indice"></ol>
+    <div id="pasos" class="pasos"></div>
+    <noscript><p class="lead">Esta guía necesita JavaScript para mostrarse.</p></noscript>
+  </section>
+
+  <section id="modelos">
+    <h2>Modelos y herramientas de referencia</h2>
+    <p class="lead">Estos son los modelos que recomendamos por ahora. Los elegimos porque están documentados, los usa mucha gente y sus resultados son comparables.</p>
+    <div class="tabla-wrap"><table id="tabla-mod" class="tabla mod"></table></div>
+    <p class="caption">Los modelos pertenecen a sus autores; revisa la licencia de cada uno antes de redistribuirlos. Tritic no está afiliado a estos proyectos.</p>
+  </section>
+
+  <section id="criterios-s">
+    <h2>Qué hace bueno a un modelo de calibración</h2>
+    <p class="lead">Estos son los criterios con los que elegimos y con los que diseñaremos los nuestros.</p>
+    <ul id="criterios" class="checks"></ul>
+    <div class="callout nota"><span class="tab-c"><i></i>Próximamente</span>
+      <ul class="lista"><li><b>Modelos Tritic.</b> Estamos diseñando nuestras propias piezas de calibración, abiertas y con un método de lectura claro, para compartirlas públicamente en esta guía.</li></ul>
+    </div>
+  </section>
+
+  <section id="siguiente">
+    <h2>¿Algo salió mal?</h2>
+    <p class="lead">Si la pieza no sale como esperabas, la guía de diagnóstico te ayuda a encontrar la causa y te dice qué paso de calibración repetir.</p>
+    <a class="visitar" href="../diagnostico/">Ir al diagnóstico de fallas →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cajetin">
+      <div><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></div>
+      <div><span class="k">Documento</span>Guía de calibración</div>
+      <div><span class="k">Código</span>TRT-GTE-CAL-001</div>
+      <div><span class="k">Versión</span>v0.1</div>
+      <div><span class="k">Fecha</span>2026-09</div>
+    </div>
+    <div class="legal">© Tritic · <a href="https://tritic3d.com">tritic3d.com</a> · <a href="../">Tritic Tools</a> · Métodos y modelos de Ellis' Print Tuning Guide, Teaching Tech, OrcaSlicer y Klipper. Fuentes revisadas en septiembre de 2026.</div>
+  </div>
+</footer>
+<script src="calibracion.js?v=0.1"></script>
+</body>
+</html>

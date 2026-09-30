@@ -226,3 +226,92 @@ input[type=number]{max-width:160px;display:block;margin-top:4px}
 @media (prefers-reduced-motion:reduce){.flash{animation:none}}
 @media (min-width:700px){.toolbar.est{position:static}}
 .sitio{scroll-margin-top:24px}
+
+/* ---- Guía de calibración y diagnóstico ---- */
+.link-b{font:500 13px var(--mono);background:none;border:0;color:var(--azul-600);cursor:pointer;padding:4px 0}
+.link-b:hover{text-decoration:underline}
+.prog{display:flex;align-items:center;gap:12px}
+.prog .label{color:var(--tinta-3);white-space:nowrap}
+.prog-track{display:block;width:140px;height:6px;background:var(--azul-100)}
+.prog-track i{display:block;height:100%;background:var(--azul-700);width:0;transition:width .2s}
+.reglas{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 24px}
+.reglas>div{display:flex;gap:12px;align-items:flex-start}
+.reglas .chip{flex:none}
+.reglas p{margin:2px 0 0;font-size:14px;color:var(--tinta-2)}
+.indice{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--filete);border:1px solid var(--filete)}
+.indice li{background:#fff}
+.indice a{display:flex;align-items:center;gap:10px;padding:10px 12px;color:var(--tinta);text-decoration:none;font-size:14px}
+.indice a:hover{background:var(--azul-50);color:var(--azul-700)}
+.indice .chip{min-width:26px;height:26px;font-size:12px}
+.pasos{display:flex;flex-direction:column;gap:24px}
+.paso{border:1px solid var(--filete);border-radius:2px;background:#fff;scroll-margin-top:24px}
+.paso.hecho{background:var(--fondo-alt)}
+.paso-head{display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:.5px solid var(--filete)}
+.paso-head h3{font:600 20px/1.3 var(--sans);margin:0}
+.paso-head .badges{margin-top:6px}
+.paso-head .chip{flex:none;height:40px;min-width:40px;font-size:16px}
+.chk-h{margin-left:auto;display:flex;align-items:center;gap:8px;font:500 13px var(--mono);color:var(--tinta-2);cursor:pointer;white-space:nowrap}
+.chk-h input{width:18px;height:18px;accent-color:var(--azul-700)}
+.paso-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;padding:24px}
+.paso h4,.causa h4{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3);margin:20px 0 8px;padding-bottom:6px;border-bottom:.5px solid var(--filete)}
+.paso-body>div>h4:first-child{margin-top:0}
+.paso p,.causa p{margin:0;font-size:14px;color:var(--tinta-2)}
+.pasos-l{margin:0;padding:0 0 0 20px;font-size:14px;color:var(--tinta-2)}
+.pasos-l li{padding:3px 0 3px 4px}
+.pasos-l li::marker{font:500 12px var(--mono);color:var(--azul-700)}
+.leer{margin-top:20px;background:var(--azul-50);border:.5px solid var(--azul-600);border-radius:2px;padding:12px 14px}
+.leer .label{color:var(--azul-600)}
+.leer p{margin:6px 0 0;color:var(--tinta)}
+.paso-pie{padding:0 24px 20px}
+.paso-pie h4{margin-top:0}
+.fuentes{list-style:none;margin:0;padding:0}
+.fuentes li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:6px 0;border-bottom:.5px solid var(--filete);font-size:14px}
+.fuentes a{font-weight:600;color:var(--azul-600)}
+.fuentes span{color:var(--tinta-3);font-size:13px}
+.sint{margin:14px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.sint .label{color:var(--tinta-3)}
+.sint a{font:400 12px var(--mono);padding:4px 8px;background:var(--azul-50);color:var(--azul-700);text-decoration:none;border-radius:2px}
+.sint a:hover{background:var(--verde-100)}
+.tabla.mod{min-width:720px}
+.tabla.mod td,.tabla.mod tbody th{vertical-align:top;white-space:normal}
+.tabla.mod tbody th{position:static;font-weight:600}
+.tabla.mod tbody th a{color:var(--azul-600)}
+a.visitar{display:inline-block}
+@media (max-width:560px){.paso-head{flex-wrap:wrap}.chk-h{margin-left:0}.prog-track{width:90px}}
+
+.sint-card{text-align:left;font:inherit;cursor:pointer;align-items:stretch}
+.sint-card:hover{border-color:var(--azul-700)}
+.sint-card h3{font-size:18px}
+.diag-s{padding-top:48px}
+.diag{border:1px solid var(--azul-700);border-radius:2px;background:#fff}
+.diag[hidden]{display:none}
+.diag-head{display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--azul-700);color:#fff}
+.diag-head .chip{background:var(--azul-950);border:1px solid var(--azul-600);flex:none}
+.diag-head h2{color:#fff;margin:2px 0 0}
+.diag-head .label{color:var(--azul-200);margin:0}
+.diag-head .sub{color:var(--azul-200);margin:4px 0 0;font-size:14px}
+.diag-head .link-b{margin-left:auto;color:#fff;white-space:nowrap}
+.ruta{list-style:none;margin:0;padding:12px 24px;background:var(--fondo-alt);border-bottom:.5px solid var(--filete);font-size:14px}
+.ruta li{padding:3px 0;color:var(--tinta-2)}
+.ruta .label{color:var(--tinta-3);margin-right:6px}
+.pregunta{padding:24px}
+.pregunta h3{font:600 20px/1.3 var(--sans);margin:0 0 16px;color:var(--tinta)}
+.opciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.opcion{text-align:left;font:400 15px/1.4 var(--sans);padding:14px 16px;border:1px solid var(--tinta-3);border-radius:2px;background:#fff;color:var(--tinta);cursor:pointer}
+.opcion:hover{border-color:var(--azul-700);background:var(--azul-50)}
+.diag .resultado{margin:0;padding:20px 24px 0}
+.causas{display:flex;flex-direction:column;gap:16px;padding:16px 24px 24px}
+.causa{border:1px solid var(--filete);border-radius:2px;padding:20px}
+.causa:first-child{border-color:var(--verde-700);background:#F5FEFB}
+.causa header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.causa header h3{font:600 18px/1.3 var(--sans);margin:0}
+.causa header .badge{margin-left:auto;flex:none}
+.causa.descartada{opacity:.55}
+.causa.descartada h3{text-decoration:line-through}
+.causa-pie{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.visitar.sec{background:#fff;color:var(--azul-700);border:1px solid var(--azul-700);font-size:12px;padding:7px 12px}
+.visitar.sec:hover{background:var(--azul-50)}
+.diag-pie{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 24px}
+.diag-pie:empty{display:none}
+@media (max-width:560px){.diag-head{flex-wrap:wrap}.diag-head .link-b{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.prog-track i{transition:none}}
