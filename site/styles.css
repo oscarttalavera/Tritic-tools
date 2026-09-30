@@ -315,3 +315,12 @@ a.visitar{display:inline-block}
 .diag-pie:empty{display:none}
 @media (max-width:560px){.diag-head{flex-wrap:wrap}.diag-head .link-b{margin-left:0}}
 @media (prefers-reduced-motion:reduce){.prog-track i{transition:none}}
+
+/* ---- Guía de diseño ---- */
+.revision{list-style:none;margin:0;padding:0;border-top:1px solid var(--tinta)}
+.revision li{border-bottom:.5px solid var(--filete)}
+.revision label{display:flex;align-items:flex-start;gap:12px;padding:12px 4px;font-size:15px;color:var(--tinta-2);cursor:pointer}
+.revision label:hover{background:var(--azul-50)}
+.revision input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--azul-700)}
+.revision input:checked+span{color:var(--tinta-3);text-decoration:line-through}
+.tabla.mod td .badge{white-space:nowrap}

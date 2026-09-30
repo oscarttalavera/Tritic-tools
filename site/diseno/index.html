@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía de diseño para impresión 3D — Tritic Tools</title>
+<meta name="description" content="Reglas de diseño para impresión 3D FDM: espesores de pared, voladizos, orientación, agujeros, holguras, ensambles y consideraciones por material. Valores que se ajustan a tu boquilla.">
+<link rel="icon" type="image/svg+xml" href="../assets/logos/tritic-logo-bloque.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=0.7">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="https://tritic3d.com" aria-label="Tritic"><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></a>
+    <a class="serie" href="../" style="text-decoration:none">Tools</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">02</span>
+    <p class="kicker">Guía de diseño</p>
+    <h1>Diseña piezas que se imprimen bien</h1>
+    <p>Reglas y valores de referencia para impresión FDM: espesores, voladizos, orientación, agujeros, holguras y ensambles. Elige tu boquilla y las medidas se ajustan.</p>
+  </div>
+</div>
+
+<div class="toolbar est" id="toolbar">
+  <div class="wrap">
+    <div class="tb-row">
+      <div>
+        <span class="label sub" id="lbl-boq">Boquilla</span>
+        <div class="seg" id="boq" role="group" aria-labelledby="lbl-boq" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <nav class="anclas" aria-label="Secciones">
+      <a href="#rapida">Medidas clave</a>
+      <a href="#reglas">Reglas de oro</a>
+      <a href="#voladizos">Voladizos</a>
+      <a href="#orientacion">Orientación</a>
+      <a href="#holguras">Holguras</a>
+      <a href="#agujeros">Agujeros</a>
+      <a href="#ensambles">Ensambles</a>
+      <a href="#materiales">Materiales</a>
+      <a href="#lista">Lista final</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="rapida">
+    <h2>Medidas clave</h2>
+    <p class="lead">Todo se calcula a partir del diámetro de la boquilla. Cambia la boquilla arriba y los valores se ajustan.</p>
+    <div id="tiles" class="tiles" aria-live="polite"></div>
+    <p class="caption" style="margin-top:36px">Tabla 1 — Dimensiones mínimas para boquilla de <span data-boq></span> mm.</p>
+    <div class="tabla-wrap"><table id="t-min" class="tabla"></table></div>
+    <p class="caption">Valores de referencia de práctica común en FDM. Tu impresora, material y perfil los desplazan un poco: valídalos con una pieza de prueba.</p>
+  </section>
+
+  <section id="reglas">
+    <h2>Reglas de oro</h2>
+    <p class="lead">Seis ideas que resuelven la mayoría de los problemas antes de imprimir.</p>
+    <ul id="l-reglas" class="checks"></ul>
+  </section>
+
+  <section id="voladizos">
+    <h2>Voladizos, puentes y soportes</h2>
+    <p class="lead">La mejor pieza es la que no necesita soportes. El ángulo se mide respecto a la vertical.</p>
+    <p class="caption">Tabla 2 — Qué esperar según el ángulo del voladizo.</p>
+    <div class="tabla-wrap"><table id="t-vol" class="tabla mod"></table></div>
+    <div class="callout nota"><span class="tab-c"><i></i>Nota</span>
+      <ul class="lista">
+        <li><b>Usa chaflanes en lugar de filetes</b> en la parte inferior de salientes: un chaflán de 45° se imprime sin soporte, un filete redondo no.</li>
+        <li><b>Agujeros horizontales:</b> dibújalos en forma de gota (punta arriba) o de diamante para eliminar el soporte interno.</li>
+        <li><b>Puentes:</b> mientras más cortos, mejor. Con buen enfriamiento y un perfil ajustado, unos 20–40 mm suelen salir bien; más allá conviene dividir la pieza o agregar un apoyo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="orientacion">
+    <h2>Orientación y resistencia</h2>
+    <p class="lead">Una pieza FDM no es isótropa: es fuerte a lo largo de las líneas y débil entre capas. Cómo se acuesta en la cama decide su resistencia, su acabado y su precisión.</p>
+    <p class="caption">Tabla 3 — Criterios para elegir la orientación.</p>
+    <div class="tabla-wrap"><table id="t-ori" class="tabla mod"></table></div>
+    <div class="callout nota"><span class="tab-c"><i></i>Nota</span>
+      <ul class="lista">
+        <li><b>La carga no debe separar las capas.</b> Si una pieza va a estar en tensión (un gancho, una bisagra), imprímela de modo que la fuerza corra a lo largo de las líneas, no perpendicular a ellas.</li>
+        <li><b>La cara con mejor acabado</b> va contra la cama o en una pared vertical; las superficies inclinadas muestran escalones.</li>
+        <li><b>La mayor precisión está en el plano XY.</b> Las medidas en Z dependen de la altura de capa: diseña alturas que sean múltiplos de ella.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="holguras">
+    <h2>Holguras y ajustes</h2>
+    <p class="lead">Las piezas impresas salen ligeramente distintas al modelo. Para que dos piezas encajen hay que dejar una holgura calculada.</p>
+    <p class="caption">Tabla 4 — Holgura por lado entre piezas, con boquilla de 0.4 mm y capa de 0.2 mm.</p>
+    <div class="tabla-wrap"><table id="t-hol" class="tabla mod"></table></div>
+    <p class="caption">Son puntos de partida. Imprime una tira de prueba con holguras de 0.05 en 0.05 mm y guarda la que funcione con tu impresora y filamento.</p>
+  </section>
+
+  <section id="agujeros">
+    <h2>Agujeros, roscas e insertos</h2>
+    <p class="lead">Los agujeros impresos salen más chicos que el modelo y no son perfectamente redondos.</p>
+    <ul id="l-agu" class="checks"></ul>
+    <p style="margin-top:24px"><a class="visitar" href="../barrenos/#impresion">Ver tabla de agujeros impresos en 3D →</a></p>
+  </section>
+
+  <section id="ensambles">
+    <h2>Ensambles y uniones</h2>
+    <p class="lead">Diseñar bien las uniones evita adhesivos, tornillería extra o piezas que se rompen a la primera.</p>
+    <div class="grid" id="g-ens"></div>
+  </section>
+
+  <section id="materiales">
+    <h2>Consideraciones por material</h2>
+    <p class="lead">El material cambia lo que puedes diseñar. Estas son las diferencias que más pesan al modelar.</p>
+    <p class="caption">Tabla 5 — Efecto del material en el diseño.</p>
+    <div class="tabla-wrap"><table id="t-mat" class="tabla mod"></table></div>
+    <p class="caption">Consulta las fichas completas en el <a href="../materiales/">catálogo de materiales</a>.</p>
+  </section>
+
+  <section id="lista">
+    <h2>Lista de revisión antes de imprimir</h2>
+    <p class="lead">Recórrela antes de exportar el archivo. Tus marcas se guardan en este navegador.</p>
+    <div class="prog" style="margin-bottom:16px"><span class="label" id="prog-txt"></span><span class="prog-track"><i id="prog-bar"></i></span>
+      <button type="button" id="reiniciar" class="link-b">Reiniciar</button></div>
+    <ul id="l-lista" class="revision"></ul>
+  </section>
+
+  <section id="siguiente">
+    <h2>Siguientes pasos</h2>
+    <p class="lead">Si la pieza no salió como esperabas o necesitas los diámetros exactos de un barreno, estas guías te ayudan.</p>
+    <p><a class="visitar" href="../diagnostico/">Diagnóstico de fallas →</a> <a class="visitar sec" href="../calibracion/" style="padding:8px 14px;font-size:13px">Guía de calibración</a> <a class="visitar sec" href="../barrenos/" style="padding:8px 14px;font-size:13px">Guía de barrenos</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cajetin">
+      <div><img src="../assets/logos/tritic-logo-azul.svg" alt="Tritic"></div>
+      <div><span class="k">Documento</span>Guía de diseño</div>
+      <div><span class="k">Código</span>TRT-GTE-DIS-001</div>
+      <div><span class="k">Versión</span>v0.1</div>
+      <div><span class="k">Fecha</span>2026-09</div>
+    </div>
+    <div class="legal">© Tritic · <a href="https://tritic3d.com">tritic3d.com</a> · <a href="../">Tritic Tools</a> · Valores de referencia basados en práctica común de FDM; valida siempre con tu impresora y material.</div>
+  </div>
+</footer>
+<script src="diseno.js?v=0.1"></script>
+</body>
+</html>
