@@ -23,6 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Incluir Trazo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V=$(tr -d '[:space:]' < trazo.version)
+          gh release download "$V" --repo oscarttalavera/trazo --pattern "trazo-web-$V.zip" --dir "$RUNNER_TEMP/trazo"
+          mkdir -p site/trazo
+          unzip -q "$RUNNER_TEMP/trazo/trazo-web-$V.zip" -d site/trazo
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
